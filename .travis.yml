@@ -1,6 +1,6 @@
 env:
   global:
-    - CC_TEST_REPORTER_ID=
+    - CC_TEST_REPORTER_ID=8fa1dbb9b8459a2189c5055e5da52b8fbfaaab5f90a9a88c4dd9327ea0fe83ff
 sudo: false
 language: node_js
 node_js:
@@ -16,6 +16,3 @@ before_script:
   - ./cc-test-reporter before-build
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-# after_success:
-#   - npm run cov:send
-#   - npm run cov:check
