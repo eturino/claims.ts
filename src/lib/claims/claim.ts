@@ -136,8 +136,7 @@ export default class Claim {
     verb: string,
     resource: string | null
   ): string | null {
-    if (!this.resource) return null;
-    if (!this.hasVerb(verb)) return null;
+    if (!this.resource || !this.hasVerb(verb)) return null;
 
     const resourceParts = partsFromResource(resource);
     if (this.resourceParts.length !== resourceParts.length + 1) return null;
@@ -152,8 +151,7 @@ export default class Claim {
     verb: string,
     resource: string | null
   ): string | null {
-    if (!this.resource) return null;
-    if (!this.hasVerb(verb)) return null;
+    if (!this.resource || !this.hasVerb(verb)) return null;
 
     if (!resource) return this.resourceParts[0];
 

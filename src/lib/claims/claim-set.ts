@@ -14,14 +14,23 @@ export default class ClaimSet {
   }
 
   public directChildren(query: string | IClaimData | Claim): string[] {
-    const parsedQuery = extractVerbResource(query);
-    const list = map(this.claims, claim => claim.directChild(parsedQuery));
-    return uniq(compact(list)).sort();
+    return this.mapInClaims(query, (claim, parsedQuery) =>
+      claim.directChild(parsedQuery)
+    );
   }
 
   public directDescendants(query: string | IClaimData | Claim): string[] {
+    return this.mapInClaims(query, (claim, parsedQuery) =>
+      claim.directDescendant(parsedQuery)
+    );
+  }
+
+  private mapInClaims(
+    query: string | IClaimData | Claim,
+    fn: (claim: Claim, parsedQuery: IClaimData) => string | null
+  ): string[] {
     const parsedQuery = extractVerbResource(query);
-    const list = map(this.claims, claim => claim.directDescendant(parsedQuery));
+    const list = map(this.claims, claim => fn(claim, parsedQuery));
     return uniq(compact(list)).sort();
   }
 }
