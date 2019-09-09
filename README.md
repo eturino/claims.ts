@@ -1,7 +1,7 @@
 # Claims (typescript)
 
-[![npm version](https://badge.fury.io/js/%40eturino%2Fclaims.svg)](https://badge.fury.io/js/%40eturino%2Fclaims)
 [![Build Status](https://travis-ci.org/eturino/claims.ts.svg?branch=master)](https://travis-ci.org/eturino/claims.ts)
+[![npm version](https://badge.fury.io/js/%40eturino%2Fclaims.svg)](https://badge.fury.io/js/%40eturino%2Fclaims)
 
 [TypeDoc generated docs in here](https://eturino.github.io/claims.ts)
 
