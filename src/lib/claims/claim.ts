@@ -68,7 +68,7 @@ export function partsFromResource(resource: string | null): string[] {
   return resource.split(".");
 }
 
-export default class Claim {
+export class Claim {
   private get resourceParts(): string[] {
     if (!this._resourceParts) {
       this._resourceParts = partsFromResource(this.resource);

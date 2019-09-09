@@ -3,9 +3,9 @@ import map from "lodash.map";
 import some from "lodash.some";
 import uniq from "lodash.uniq";
 
-import Claim, { buildClaim, extractVerbResource, IClaimData } from "./claim";
+import { buildClaim, Claim, extractVerbResource, IClaimData } from "./claim";
 
-export default class ClaimSet {
+export class ClaimSet {
   constructor(public readonly claims: Claim[]) {}
 
   public check(query: string | IClaimData | Claim): boolean {

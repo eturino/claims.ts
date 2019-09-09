@@ -1,5 +1,5 @@
 import { buildClaim } from "../claim";
-import ClaimSet, { buildClaimSet } from "../claim-set";
+import { buildClaimSet, ClaimSet } from "../claim-set";
 
 describe("buildClaimSet()", () => {
   it('with [""]: error', async () => {

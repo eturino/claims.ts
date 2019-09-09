@@ -1,4 +1,4 @@
-import Claim, { buildClaim } from "../claim";
+import { buildClaim, Claim } from "../claim";
 
 describe("buildClaim()", () => {
   it("with empty string: error", async () => {

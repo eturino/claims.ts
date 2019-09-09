@@ -1,6 +1,6 @@
-import Ability, { buildAbility } from "../ability";
+import { Ability, buildAbility } from "../ability";
 import { buildClaim } from "../claim";
-import ClaimSet, { buildClaimSet } from "../claim-set";
+import { buildClaimSet, ClaimSet } from "../claim-set";
 
 describe("buildAbility()", () => {
   it('with [""] and ["read:valid"]: error', async () => {
