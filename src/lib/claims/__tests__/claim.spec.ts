@@ -517,6 +517,6 @@ describe("extractVerbResource()", () => {
   });
 
   it("fails if given something else", () => {
-    expect(() => extractVerbResource({} as IClaimData)).toThrow();
+    expect(() => extractVerbResource({} as IClaimData)).toThrow(); // forcing it to provoke the error
   });
 });
