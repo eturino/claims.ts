@@ -113,9 +113,14 @@
 					<div class="tsd-signature tsd-kind-icon">ALLOWED_<wbr>VERBS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[&quot;admin&quot;, &quot;read&quot;]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L9">lib/claims/claim.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L12">lib/claims/claim.ts:12</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>allowed verbs for a Claim</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
 					<a name="claim_regex" class="tsd-anchor"></a>
@@ -123,7 +128,7 @@
 					<div class="tsd-signature tsd-kind-icon">CLAIM_<wbr>REGEX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> =&nbsp;/^([\w_\-]+):([\w_.\-]+\w)(\.\*)?$/</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L5">lib/claims/claim.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L5">lib/claims/claim.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -133,7 +138,7 @@
 					<div class="tsd-signature tsd-kind-icon">GLOBAL_<wbr>WILDCARD_<wbr>CLAIM_<wbr>REGEX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> =&nbsp;/^([\w_\-]+):\*$/</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L6">lib/claims/claim.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L6">lib/claims/claim.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -150,16 +155,32 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/ability.ts#L26">lib/claims/ability.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/ability.ts#L54">lib/claims/ability.ts:54</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt data-tag-name="see">see</dt>
+									<dd data-tag-name="see"><p>buildClaimSet</p>
+									</dd>
+									<dt data-tag-name="see">see</dt>
+									<dd data-tag-name="see"><p>Ability</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>permittedStrings: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/iclaimdata.html" class="tsd-signature-type">IClaimData</a><span class="tsd-signature-symbol"> | </span><a href="classes/claim.html" class="tsd-signature-type">Claim</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>each element can be a string (&quot;verb:resource&quot; or &quot;verb:*&quot;) or an object with <code>verb</code> and <code>resource</code></p>
+									</div>
 								</li>
 								<li>
 									<h5>prohibitedStrings: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/iclaimdata.html" class="tsd-signature-type">IClaimData</a><span class="tsd-signature-symbol"> | </span><a href="classes/claim.html" class="tsd-signature-type">Claim</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>each element can be a string (&quot;verb:resource&quot; or &quot;verb:*&quot;) or an object with <code>verb</code> and <code>resource</code></p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="classes/ability.html" class="tsd-signature-type">Ability</a></h4>
@@ -176,13 +197,30 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L164">lib/claims/claim.ts:164</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L243">lib/claims/claim.ts:243</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>creates a new <code>Claim</code> object with the info given</p>
+								</div>
+								<p>it validates the verb is one of the valid verbs</p>
+								<dl class="tsd-comment-tags">
+									<dt data-tag-name="see">see</dt>
+									<dd data-tag-name="see"><p>ALLOWED_VERBS</p>
+									</dd>
+									<dt data-tag-name="see">see</dt>
+									<dd data-tag-name="see"><p>Claim</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>stringOrObject: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/iclaimdata.html" class="tsd-signature-type">IClaimData</a><span class="tsd-signature-symbol"> | </span><a href="classes/claim.html" class="tsd-signature-type">Claim</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>can be a string (&quot;verb:resource&quot; or &quot;verb:*&quot;) or an object with <code>verb</code> and <code>resource</code></p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="classes/claim.html" class="tsd-signature-type">Claim</a></h4>
@@ -193,19 +231,35 @@
 					<a name="buildclaimset" class="tsd-anchor"></a>
 					<h3>build<wbr>Claim<wbr>Set</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">build<wbr>Claim<wbr>Set<span class="tsd-signature-symbol">(</span>strings<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/iclaimdata.html" class="tsd-signature-type">IClaimData</a><span class="tsd-signature-symbol"> | </span><a href="classes/claim.html" class="tsd-signature-type">Claim</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="classes/claimset.html" class="tsd-signature-type">ClaimSet</a></li>
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Claim<wbr>Set<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/iclaimdata.html" class="tsd-signature-type">IClaimData</a><span class="tsd-signature-symbol"> | </span><a href="classes/claim.html" class="tsd-signature-type">Claim</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="classes/claimset.html" class="tsd-signature-type">ClaimSet</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim-set.ts#L38">lib/claims/claim-set.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim-set.ts#L60">lib/claims/claim-set.ts:60</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>creates a new ClaimSet by calling <code>buildClaim()</code> on each element of the given list and assign that to a new <code>ClaimSet</code></p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt data-tag-name="see">see</dt>
+									<dd data-tag-name="see"><p>buildClaim</p>
+									</dd>
+									<dt data-tag-name="see">see</dt>
+									<dd data-tag-name="see"><p>ClaimSet</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>strings: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/iclaimdata.html" class="tsd-signature-type">IClaimData</a><span class="tsd-signature-symbol"> | </span><a href="classes/claim.html" class="tsd-signature-type">Claim</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>list: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/iclaimdata.html" class="tsd-signature-type">IClaimData</a><span class="tsd-signature-symbol"> | </span><a href="classes/claim.html" class="tsd-signature-type">Claim</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>each element can be a string (&quot;verb:resource&quot; or &quot;verb:*&quot;) or an object with <code>verb</code> and <code>resource</code></p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="classes/claimset.html" class="tsd-signature-type">ClaimSet</a></h4>
@@ -222,7 +276,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L16">lib/claims/claim.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L19">lib/claims/claim.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -252,7 +306,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L27">lib/claims/claim.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L30">lib/claims/claim.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -275,7 +329,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L45">lib/claims/claim.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L48">lib/claims/claim.ts:48</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -298,7 +352,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L66">lib/claims/claim.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L69">lib/claims/claim.ts:69</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>

@@ -112,6 +112,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="claim.html#isglobal" class="tsd-kind-icon">is<wbr>Global</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="claim.html#lookupdirectchild" class="tsd-kind-icon">lookup<wbr>Direct<wbr>Child</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="claim.html#lookupdirectdescendant" class="tsd-kind-icon">lookup<wbr>Direct<wbr>Descendant</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="claim.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
 							</ul>
 						</section>
 					</div>
@@ -129,7 +130,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L81">lib/claims/claim.ts:81</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L84">lib/claims/claim.ts:84</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -159,7 +160,7 @@
 					<div class="tsd-signature tsd-kind-icon">_resource<wbr>Parts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> =&nbsp;null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L81">lib/claims/claim.ts:81</a></li>
+							<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L84">lib/claims/claim.ts:84</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -169,7 +170,7 @@
 					<div class="tsd-signature tsd-kind-icon">resource<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L79">lib/claims/claim.ts:79</a></li>
+							<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L82">lib/claims/claim.ts:82</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -179,7 +180,7 @@
 					<div class="tsd-signature tsd-kind-icon">verb<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L78">lib/claims/claim.ts:78</a></li>
+							<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L81">lib/claims/claim.ts:81</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -196,7 +197,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L72">lib/claims/claim.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L75">lib/claims/claim.ts:75</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
@@ -216,13 +217,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L97">lib/claims/claim.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L119">lib/claims/claim.ts:119</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>returns true if this claim includes the given query</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>query: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/iclaimdata.html" class="tsd-signature-type">IClaimData</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>can be a string (&quot;verb:resource&quot; or &quot;verb:*&quot;) or an object with <code>verb</code> and <code>resource</code></p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -239,13 +248,29 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L117">lib/claims/claim.ts:117</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L160">lib/claims/claim.ts:160</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>given a query, if this claim is a direct child of that query, it will return the immediate child part. Otherwise it returns null</p>
+								</div>
+								<p>e.g.</p>
+								<pre><code class="language-js"><span class="hljs-keyword">const</span> claim = buildClaim(<span class="hljs-string">"read:what.some.stuff"</span>);
+claim.directChild(<span class="hljs-string">"admin:*"</span>) <span class="hljs-comment">// =&gt; null</span>
+claim.directChild(<span class="hljs-string">"read:*"</span>) <span class="hljs-comment">// =&gt; null</span>
+claim.directChild(<span class="hljs-string">"read:what"</span>) <span class="hljs-comment">// =&gt; null</span>
+claim.directChild(<span class="hljs-string">"read:what.some"</span>) <span class="hljs-comment">// =&gt; "stuff"</span>
+claim.directChild(<span class="hljs-string">"read:what.some.stuff"</span>) <span class="hljs-comment">// =&gt; null</span>
+claim.directChild(<span class="hljs-string">"read:what.some.stuff.blah"</span>) <span class="hljs-comment">// =&gt; null</span></code></pre>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>query: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/iclaimdata.html" class="tsd-signature-type">IClaimData</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>can be a string (&quot;verb:resource&quot; or &quot;verb:*&quot;) or an object with <code>verb</code> and <code>resource</code></p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>
@@ -265,13 +290,28 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L126">lib/claims/claim.ts:126</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L190">lib/claims/claim.ts:190</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>given a query, if this claim is a direct descendant of that query, it will return the immediate child part. Otherwise it returns null</p>
+								</div>
+								<p>e.g.</p>
+								<pre><code class="language-js">claim.directDescendant(<span class="hljs-string">"admin:*"</span>) <span class="hljs-comment">// =&gt; null</span>
+claim.directDescendant(<span class="hljs-string">"read:*"</span>) <span class="hljs-comment">// =&gt; "what"</span>
+claim.directDescendant(<span class="hljs-string">"read:what"</span>) <span class="hljs-comment">// =&gt; "some"</span>
+claim.directDescendant(<span class="hljs-string">"read:what.some"</span>) <span class="hljs-comment">// =&gt; "stuff"</span>
+claim.directDescendant(<span class="hljs-string">"read:what.some.stuff"</span>) <span class="hljs-comment">// =&gt; null</span>
+claim.directDescendant(<span class="hljs-string">"read:what.some.stuff.blah"</span>) <span class="hljs-comment">// =&gt; null</span></code></pre>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>query: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/iclaimdata.html" class="tsd-signature-type">IClaimData</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>can be a string (&quot;verb:resource&quot; or &quot;verb:*&quot;) or an object with <code>verb</code> and <code>resource</code></p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>
@@ -291,13 +331,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L89">lib/claims/claim.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L103">lib/claims/claim.ts:103</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>true if the given verb is the same as the claim&#39;s</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>verb: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -314,13 +361,26 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L122">lib/claims/claim.ts:122</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L171">lib/claims/claim.ts:171</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>return true if directChild() does not return null</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt data-tag-name="see">see</dt>
+									<dd data-tag-name="see"><p>directChild</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>query: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/iclaimdata.html" class="tsd-signature-type">IClaimData</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>can be a string (&quot;verb:resource&quot; or &quot;verb:*&quot;) or an object with <code>verb</code> and <code>resource</code></p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -337,13 +397,26 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L131">lib/claims/claim.ts:131</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L201">lib/claims/claim.ts:201</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>return true if isDirectDescendant() does not return null</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt data-tag-name="see">see</dt>
+									<dd data-tag-name="see"><p>isDirectDescendant</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>query: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/iclaimdata.html" class="tsd-signature-type">IClaimData</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>can be a string (&quot;verb:resource&quot; or &quot;verb:*&quot;) or an object with <code>verb</code> and <code>resource</code></p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -360,13 +433,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L110">lib/claims/claim.ts:110</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L137">lib/claims/claim.ts:137</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>returns true if this claim represents exactly the same as the given query</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>query: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/iclaimdata.html" class="tsd-signature-type">IClaimData</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>can be a string (&quot;verb:resource&quot; or &quot;verb:*&quot;) or an object with <code>verb</code> and <code>resource</code></p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -383,9 +464,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L93">lib/claims/claim.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L110">lib/claims/claim.ts:110</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>true if the claim has no resource (global verb). This means that it represents all resources for this verb</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -400,7 +486,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L135">lib/claims/claim.ts:135</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L205">lib/claims/claim.ts:205</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -429,7 +515,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12b1a63/src/lib/claims/claim.ts#L150">lib/claims/claim.ts:150</a></li>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L220">lib/claims/claim.ts:220</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -445,6 +531,28 @@
 								<span class="tsd-signature-symbol"> | </span>
 								<span class="tsd-signature-type">null</span>
 							</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="tostring" class="tsd-anchor"></a>
+					<h3>to<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>String<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/eturino/claims.ts/blob/12dcf49/src/lib/claims/claim.ts#L95">lib/claims/claim.ts:95</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>returns <code>verb:resource</code> (if global, it will return <code>verb:*</code>)</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -513,6 +621,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="claim.html#lookupdirectdescendant" class="tsd-kind-icon">lookup<wbr>Direct<wbr>Descendant</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="claim.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
 							</li>
 						</ul>
 					</li>
