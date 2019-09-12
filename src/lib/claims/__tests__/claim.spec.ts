@@ -1,4 +1,4 @@
-import { buildClaim, Claim } from "../claim";
+import { buildClaim, Claim, extractVerbResource, IClaimData } from "../claim";
 
 describe("buildClaim()", () => {
   it("with empty string: error", async () => {
@@ -113,6 +113,22 @@ describe("Claim#check()", () => {
   });
 });
 
+describe("Claim#toString()", () => {
+  describe("global (read:*)", () => {
+    it('returns "read:*"', () => {
+      const claim = buildClaim("read:*");
+      expect(claim.toString()).toEqual("read:*");
+    });
+  });
+
+  describe("not global (read:something.or.other)", () => {
+    it('returns "read:*"', () => {
+      const claim = buildClaim("read:something.or.other");
+      expect(claim.toString()).toEqual("read:something.or.other");
+    });
+  });
+});
+
 describe("Claim#isExact()", () => {
   describe('buildClaim("read:*")', () => {
     const claim = buildClaim("read:*");
@@ -195,6 +211,10 @@ describe("Claim#directChild()", () => {
       expect(claim.directChild("read:something.else")).toBeNull();
     });
 
+    it(".directChild('read:another.else'): false", async () => {
+      expect(claim.directChild("read:another.else")).toBeNull();
+    });
+
     it(".directChild('admin:*'): null", async () => {
       expect(claim.directChild("admin:*")).toBeNull();
     });
@@ -271,6 +291,10 @@ describe("Claim#isDirectChild()", () => {
 
     it(".isDirectChild('read:something.else'): false", async () => {
       expect(claim.isDirectChild("read:something.else")).toBeFalsy();
+    });
+
+    it(".isDirectChild('read:another.else'): false", async () => {
+      expect(claim.isDirectChild("read:another.else")).toBeFalsy();
     });
 
     it(".isDirectChild('admin:*'): false", async () => {
@@ -460,5 +484,39 @@ describe("Claim#isDirectDescendant()", () => {
     it(".isDirectDescendant('admin:something'): false", async () => {
       expect(claim.isDirectDescendant("admin:something")).toBeFalsy();
     });
+  });
+});
+
+describe("extractVerbResource()", () => {
+  it('extractVerbResource("read:stuff")', () => {
+    expect(extractVerbResource("read:stuff")).toEqual({
+      verb: "read",
+      resource: "stuff"
+    });
+  });
+
+  it('extractVerbResource("read:*")', () => {
+    expect(extractVerbResource("read:*")).toEqual({
+      verb: "read",
+      resource: null
+    });
+  });
+
+  it('extractVerbResource({ verb: "read", resource: "stuff" })', () => {
+    expect(extractVerbResource({ verb: "read", resource: "stuff" })).toEqual({
+      verb: "read",
+      resource: "stuff"
+    });
+  });
+
+  it('extractVerbResource({ verb: "read", resource: null })', () => {
+    expect(extractVerbResource({ verb: "read", resource: null })).toEqual({
+      verb: "read",
+      resource: null
+    });
+  });
+
+  it("fails if given something else", () => {
+    expect(() => extractVerbResource({} as IClaimData)).toThrow();
   });
 });

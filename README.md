@@ -9,6 +9,8 @@
 
 [Github repo here](https://github.com/eturino/claims.ts)
 
+Library to encapsulate Claims (`"verb:resource"`) as well as ClaimSet (set of Claims) and Ability (permitted ClaimSet + prohibited ClaimSet).
+
 TBD
 
 (TypeScript port of <https://github.com/eturino/claims>)
@@ -22,6 +24,10 @@ Library bootstrapped using [typescript-starter](https://github.com/bitjson/types
 ## Usage
 
 TBD
+
+see the [type docs](https://eturino.github.io/claims.ts) for now
+
+instantiating the object using the `buildClaim()`, `buildClaimSet()` and `buildAbility()` functions is recommended
 
 ## Collaborators
 

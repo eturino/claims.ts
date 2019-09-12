@@ -6,6 +6,9 @@ const CLAIM_REGEX = /^([\w_\-]+):([\w_.\-]+\w)(\.\*)?$/; // allows for the optio
 const GLOBAL_WILDCARD_CLAIM_REGEX = /^([\w_\-]+):\*$/; // cater for `read:*` global claims
 // const QUERY_RESOURCE_REGEX = /^([\w_.\-]+\w)(\.\*)?$/; // allows for the optional `.*` at the end, that will be ignored on the Claim creation
 
+/**
+ * allowed verbs for a Claim
+ */
 export const ALLOWED_VERBS = ["admin", "read"];
 
 /**
@@ -86,14 +89,33 @@ export class Claim {
     this.resource = resource;
   }
 
+  /**
+   * returns `verb:resource` (if global, it will return `verb:*`)
+   */
+  public toString(): string {
+    return `${this.verb}:${this.resource || "*"}`;
+  }
+
+  /**
+   * true if the given verb is the same as the claim's
+   * @param verb
+   */
   public hasVerb(verb: string): boolean {
     return this.verb === verb;
   }
 
+  /**
+   * true if the claim has no resource (global verb). This means that it represents all resources for this verb
+   */
   public isGlobal(): boolean {
     return !this.resource;
   }
 
+  /**
+   * returns true if this claim includes the given query
+   *
+   * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
+   */
   public check(query: string | IClaimData): boolean {
     const { verb, resource } = extractVerbResource(query);
     if (this.verb !== verb) return false;
@@ -107,6 +129,11 @@ export class Claim {
     return resource.startsWith(`${this.resource}.`);
   }
 
+  /**
+   * returns true if this claim represents exactly the same as the given query
+   *
+   * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
+   */
   public isExact(query: string | IClaimData): boolean {
     const { verb, resource } = extractVerbResource(query);
     if (this.verb !== verb) return false;
@@ -114,20 +141,63 @@ export class Claim {
     return resource === this.resource;
   }
 
+  /**
+   * given a query, if this claim is a direct child of that query, it will return the immediate child part. Otherwise it returns null
+   *
+   * e.g.
+   * ```js
+   * const claim = buildClaim("read:what.some.stuff");
+   * claim.directChild("admin:*") // => null
+   * claim.directChild("read:*") // => null
+   * claim.directChild("read:what") // => null
+   * claim.directChild("read:what.some") // => "stuff"
+   * claim.directChild("read:what.some.stuff") // => null
+   * claim.directChild("read:what.some.stuff.blah") // => null
+   * ```
+   *
+   * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
+   */
   public directChild(query: string | IClaimData): string | null {
     const { verb, resource } = extractVerbResource(query);
     return this.lookupDirectChild(verb, resource);
   }
 
+  /**
+   * return true if directChild() does not return null
+   *
+   * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
+   * @see directChild
+   */
   public isDirectChild(query: string | IClaimData): boolean {
     return !!this.directChild(query);
   }
 
+  /**
+   * given a query, if this claim is a direct descendant of that query, it will return the immediate child part. Otherwise it returns null
+   *
+   * e.g.
+   * ```js
+   * claim.directDescendant("admin:*") // => null
+   * claim.directDescendant("read:*") // => "what"
+   * claim.directDescendant("read:what") // => "some"
+   * claim.directDescendant("read:what.some") // => "stuff"
+   * claim.directDescendant("read:what.some.stuff") // => null
+   * claim.directDescendant("read:what.some.stuff.blah") // => null
+   * ```
+   *
+   * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
+   */
   public directDescendant(query: string | IClaimData): string | null {
     const { verb, resource } = extractVerbResource(query);
     return this.lookupDirectDescendant(verb, resource);
   }
 
+  /**
+   * return true if isDirectDescendant() does not return null
+   *
+   * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
+   * @see isDirectDescendant
+   */
   public isDirectDescendant(query: string | IClaimData): boolean {
     return !!this.directDescendant(query);
   }
@@ -161,6 +231,15 @@ export class Claim {
   }
 }
 
+/**
+ * creates a new `Claim` object with the info given
+ *
+ * it validates the verb is one of the valid verbs
+ *
+ * @param stringOrObject can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
+ * @see ALLOWED_VERBS
+ * @see Claim
+ */
 export function buildClaim(stringOrObject: string | IClaimData | Claim): Claim {
   return new Claim(extractVerbResource(stringOrObject));
 }
