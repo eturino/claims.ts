@@ -15,3 +15,5 @@ coverage
 *.log
 README.pdf
 .DS_Store
+.circleci
+.dependabot
