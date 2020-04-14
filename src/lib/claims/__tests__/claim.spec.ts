@@ -491,28 +491,28 @@ describe("extractVerbResource()", () => {
   it('extractVerbResource("read:stuff")', () => {
     expect(extractVerbResource("read:stuff")).toEqual({
       verb: "read",
-      resource: "stuff"
+      resource: "stuff",
     });
   });
 
   it('extractVerbResource("read:*")', () => {
     expect(extractVerbResource("read:*")).toEqual({
       verb: "read",
-      resource: null
+      resource: null,
     });
   });
 
   it('extractVerbResource({ verb: "read", resource: "stuff" })', () => {
     expect(extractVerbResource({ verb: "read", resource: "stuff" })).toEqual({
       verb: "read",
-      resource: "stuff"
+      resource: "stuff",
     });
   });
 
   it('extractVerbResource({ verb: "read", resource: null })', () => {
     expect(extractVerbResource({ verb: "read", resource: null })).toEqual({
       verb: "read",
-      resource: null
+      resource: null,
     });
   });
 

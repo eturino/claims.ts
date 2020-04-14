@@ -2,10 +2,7 @@ import { Claim, extractVerbResource, IClaimData } from "./claim";
 import { buildClaimSet, ClaimSet } from "./claim-set";
 
 export class Ability {
-  constructor(
-    public readonly permitted: ClaimSet,
-    public readonly prohibited: ClaimSet
-  ) {}
+  constructor(public readonly permitted: ClaimSet, public readonly prohibited: ClaimSet) {}
 
   /**
    * inverse of `can()`
@@ -27,9 +24,7 @@ export class Ability {
    */
   public can(query: string | IClaimData | Claim): boolean {
     const parsedQuery = extractVerbResource(query);
-    return (
-      this.permitted.check(parsedQuery) && !this.prohibited.check(parsedQuery)
-    );
+    return this.permitted.check(parsedQuery) && !this.prohibited.check(parsedQuery);
   }
 
   /**
@@ -52,8 +47,8 @@ export class Ability {
  * @see Ability
  */
 export function buildAbility(
-  permittedStrings: Array<string | IClaimData | Claim>,
-  prohibitedStrings: Array<string | IClaimData | Claim>
+  permittedStrings: (string | IClaimData | Claim)[],
+  prohibitedStrings: (string | IClaimData | Claim)[]
 ): Ability {
   const permitted = buildClaimSet(permittedStrings);
   const prohibited = buildClaimSet(prohibitedStrings);

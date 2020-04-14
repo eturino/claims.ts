@@ -40,14 +40,10 @@ function extractFromString(s: string): IClaimData {
     return { verb: resourceMatch[1], resource: resourceMatch[2] };
   }
 
-  throw new Error(
-    "cannot recognise verb and resource, it is neither `verb:*` or `verb:some.resource`"
-  );
+  throw new Error("cannot recognise verb and resource, it is neither `verb:*` or `verb:some.resource`");
 }
 
-export function extractVerbResource(
-  stringOrData: string | IClaimData | Claim
-): IClaimData {
+export function extractVerbResource(stringOrData: string | IClaimData | Claim): IClaimData {
   // eslint-disable-next-line @typescript-eslint/no-use-before-define
   if (stringOrData instanceof Claim) {
     return { verb: stringOrData.verb, resource: stringOrData.resource };
@@ -202,10 +198,7 @@ export class Claim {
     return !!this.directDescendant(query);
   }
 
-  private lookupDirectChild(
-    verb: string,
-    resource: string | null
-  ): string | null {
+  private lookupDirectChild(verb: string, resource: string | null): string | null {
     if (!this.resource || !this.hasVerb(verb)) return null;
 
     const resourceParts = partsFromResource(resource);
@@ -217,10 +210,7 @@ export class Claim {
     return `${this.resource}`.replace(`${resource}.`, "");
   }
 
-  private lookupDirectDescendant(
-    verb: string,
-    resource: string | null
-  ): string | null {
+  private lookupDirectDescendant(verb: string, resource: string | null): string | null {
     if (!this.resource || !this.hasVerb(verb)) return null;
 
     if (!resource) return this.resourceParts[0];

@@ -25,9 +25,7 @@ export class ClaimSet {
    * @see Claim
    */
   public directChildren(query: string | IClaimData | Claim): string[] {
-    return this.mapInClaims(query, (claim, parsedQuery) =>
-      claim.directChild(parsedQuery)
-    );
+    return this.mapInClaims(query, (claim, parsedQuery) => claim.directChild(parsedQuery));
   }
 
   /**
@@ -36,9 +34,7 @@ export class ClaimSet {
    * @see Claim
    */
   public directDescendants(query: string | IClaimData | Claim): string[] {
-    return this.mapInClaims(query, (claim, parsedQuery) =>
-      claim.directDescendant(parsedQuery)
-    );
+    return this.mapInClaims(query, (claim, parsedQuery) => claim.directDescendant(parsedQuery));
   }
 
   private mapInClaims(
@@ -46,7 +42,7 @@ export class ClaimSet {
     fn: (claim: Claim, parsedQuery: IClaimData) => string | null
   ): string[] {
     const parsedQuery = extractVerbResource(query);
-    const list = map(this.claims, claim => fn(claim, parsedQuery));
+    const list = map(this.claims, (claim) => fn(claim, parsedQuery));
     return uniq(compact(list)).sort();
   }
 }
@@ -57,10 +53,8 @@ export class ClaimSet {
  * @see buildClaim
  * @see ClaimSet
  */
-export function buildClaimSet(
-  list: Array<string | IClaimData | Claim>
-): ClaimSet {
-  const claims = list.map(s => buildClaim(s));
+export function buildClaimSet(list: (string | IClaimData | Claim)[]): ClaimSet {
+  const claims = list.map((s) => buildClaim(s));
 
   return new ClaimSet(claims);
 }

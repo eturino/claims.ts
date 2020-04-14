@@ -100,10 +100,7 @@ describe("ClaimSet#directDescendants", () => {
     third.directDescendant = thirdFn;
     fourth.directDescendant = fourthFn;
 
-    expect(claimSet.directDescendants("read:something")).toEqual([
-      "alfa",
-      "paco"
-    ]); // uses mocks!
+    expect(claimSet.directDescendants("read:something")).toEqual(["alfa", "paco"]); // uses mocks!
     expect(firstFn.mock.calls.length).toBe(1);
     expect(secondFn.mock.calls.length).toBe(1);
     expect(thirdFn.mock.calls.length).toBe(1);
