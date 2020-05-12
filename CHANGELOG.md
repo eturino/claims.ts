@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/eturino/claims.ts/compare/v0.1.4...v0.1.5) (2020-05-12)
+
+
+### Bug Fixes
+
+* target ES2017 instead of esnext for module, and ES2015 for main ([dee3c6d](https://github.com/eturino/claims.ts/commit/dee3c6dc869c2c7f9a9a28f4038027c20c4c9765))
+
 ### [0.1.4](https://github.com/eturino/claims.ts/compare/v0.1.3...v0.1.4) (2020-04-29)
 
 ### [0.1.3](https://github.com/eturino/claims.ts/compare/v0.1.2...v0.1.3) (2020-04-14)
