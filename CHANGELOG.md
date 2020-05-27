@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/eturino/claims.ts/compare/v0.1.6...v0.1.7) (2020-05-27)
+
+
+### Features
+
+* ability#accessToResources(query): KeySet<string> with access to children of given query ([b652775](https://github.com/eturino/claims.ts/commit/b65277529c565f0d0d9ba30b9d0b1b83695d5321))
+
 ### [0.1.6](https://github.com/eturino/claims.ts/compare/v0.1.5...v0.1.6) (2020-05-12)
 
 ### [0.1.5](https://github.com/eturino/claims.ts/compare/v0.1.4...v0.1.5) (2020-05-12)
