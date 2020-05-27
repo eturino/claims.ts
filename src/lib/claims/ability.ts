@@ -1,3 +1,4 @@
+import { KeySet, all, some } from "@eturino/key-set";
 import { Claim, extractVerbResource, IClaimData } from "./claim";
 import { buildClaimSet, ClaimSet } from "./claim-set";
 
@@ -36,6 +37,18 @@ export class Ability {
    */
   public isExplicitlyProhibited(query: string | IClaimData | Claim): boolean {
     return this.prohibited.check(query);
+  }
+
+  /**
+   * returns a KeySet describing the access of this ability to the children of the given query:
+   * allows on direct descendants, forbids on direct children
+   * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
+   */
+  accessToResources(query: string | IClaimData | Claim): KeySet<string> {
+    const allowed = this.permitted.check(query) ? all<string>() : some(this.permitted.directDescendants(query));
+    const forbidden = this.prohibited.check(query) ? all<string>() : some(this.prohibited.directChildren(query));
+
+    return allowed.remove(forbidden);
   }
 }
 
