@@ -24,7 +24,7 @@
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:tslint": "tslint --fix --project .",
     "type-check": "tsc --noEmit",
-    "test": "run-s build test:*",
+    "test": "run-s build test:* type-check",
     "test:lint": "tslint --project . && prettier \"src/**/*.ts\" --list-different",
     "test:unit": "jest --coverage",
     "cov": "run-s build cov:html && open-cli coverage/index.html",
@@ -35,7 +35,7 @@
     "doc:json": "typedoc src/ --exclude **/*.spec.ts --target ES6 --mode file --json build/docs/typedoc.json",
     "doc:publish": "gh-pages -m \"[ci skip] Updates\" -d build/docs",
     "version": "standard-version",
-    "reset": "git clean -dfx && git reset --hard && npm i",
+    "reset": "git clean -dfx -e .idea && git reset --hard && yarn",
     "clean": "trash build test",
     "prepare-release": "run-s reset test doc:html version doc:publish"
   },
@@ -48,7 +48,7 @@
     "doc": "Generate HTML API documentation and open it in a browser",
     "doc:json": "Generate API documentation in typedoc JSON format",
     "version": "Bump package.json version, update CHANGELOG.md, tag release",
-    "reset": "Delete all untracked files and reset the repo to the last commit",
+    "reset": "Delete all untracked files (except `.idea`) and reset the repo to the last commit",
     "prepare-release": "One-step: clean, build, test, publish docs, and prep a release"
   },
   "engines": {
