@@ -15,6 +15,7 @@
     "parmissions"
   ],
   "scripts": {
+    "install-peers": "install-peers -f",
     "prepare": "install-peers",
     "describe": "npm-scripts-info",
     "build": "run-s clean && run-p build:*",
@@ -37,7 +38,7 @@
     "version": "standard-version",
     "reset": "git clean -dfx -e .idea && git reset --hard && yarn install",
     "clean": "trash build test",
-    "prepare-release": "run-s reset test doc:html version doc:publish"
+    "prepare-release": "run-s reset install-peers test doc:html version doc:publish"
   },
   "scripts-info": {
     "info": "Display information about the package scripts",
