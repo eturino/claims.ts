@@ -35,7 +35,7 @@
     "doc:json": "typedoc src/index.ts --exclude **/*.spec.ts --json build/docs/typedoc.json",
     "doc:publish": "gh-pages -m \"[ci skip] Updates\" -d build/docs",
     "version": "standard-version",
-    "reset": "git clean -dfx -e .idea && git reset --hard && yarn",
+    "reset": "git clean -dfx -e .idea && git reset --hard && yarn install",
     "clean": "trash build test",
     "prepare-release": "run-s reset test doc:html version doc:publish"
   },
