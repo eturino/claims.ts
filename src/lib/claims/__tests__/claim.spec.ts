@@ -1,4 +1,5 @@
 import { buildClaim, Claim, extractVerbResource, IClaimData } from "../claim";
+import { isValidClaimString } from "../is-valid-claim-string";
 
 describe("buildClaim()", () => {
   it("with empty string: error", async () => {
@@ -10,7 +11,7 @@ describe("buildClaim()", () => {
   });
 
   it("with 'blah:*': error", async () => {
-    expect(() => buildClaim("blah:what")).toThrowError();
+    expect(() => buildClaim("blah:*")).toThrowError();
   });
 
   it("with 'admin:what': builds Claim (admin: what)", async () => {
@@ -518,5 +519,47 @@ describe("extractVerbResource()", () => {
 
   it("fails if given something else", () => {
     expect(() => extractVerbResource({} as IClaimData)).toThrow(); // forcing it to provoke the error
+  });
+});
+
+describe("isValidClaimString(x)", () => {
+  it('isValidClaimString("read:stuff")', () => {
+    expect(isValidClaimString("read:stuff")).toBeTruthy();
+  });
+
+  it('isValidClaimString("read:stuff.nested")', () => {
+    expect(isValidClaimString("read:stuff.nested")).toBeTruthy();
+  });
+
+  it('isValidClaimString("read:stuff.nested.*")', () => {
+    expect(isValidClaimString("read:stuff.nested.*")).toBeTruthy();
+  });
+
+  it('isValidClaimString("read:*")', () => {
+    expect(isValidClaimString("read:*")).toBeTruthy();
+  });
+
+  it('isValidClaimString("bad:*")', () => {
+    expect(isValidClaimString("bad:*")).toBeFalsy();
+  });
+
+  it('isValidClaimString("bad!")', () => {
+    expect(isValidClaimString("bad!")).toBeFalsy();
+  });
+
+  it('isValidClaimString("read:stuff!")', () => {
+    expect(isValidClaimString("read:stuff!")).toBeFalsy();
+  });
+
+  it('isValidClaimString("read:stuff.*.other")', () => {
+    expect(isValidClaimString("read:stuff.*.other")).toBeFalsy();
+  });
+
+  it('isValidClaimString("read:stuff..other")', () => {
+    expect(isValidClaimString("read:stuff..other")).toBeFalsy();
+  });
+
+  it('isValidClaimString("read:stuff.other.")', () => {
+    expect(isValidClaimString("read:stuff.other.")).toBeFalsy();
   });
 });

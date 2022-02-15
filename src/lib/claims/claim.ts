@@ -1,15 +1,12 @@
 import has from "lodash.has";
 import isObject from "lodash.isobject";
 import isString from "lodash.isstring";
+import { ALLOWED_VERBS } from "../..";
+import { InvalidPatternError, InvalidVerbError } from "./errors";
 
 const CLAIM_REGEX = /^([\w_\-]+):([\w_.\-]+\w)(\.\*)?$/; // allows for the optional `.*` at the end, that will be ignored on the Claim creation
 const GLOBAL_WILDCARD_CLAIM_REGEX = /^([\w_\-]+):\*$/; // cater for `read:*` global claims
 // const QUERY_RESOURCE_REGEX = /^([\w_.\-]+\w)(\.\*)?$/; // allows for the optional `.*` at the end, that will be ignored on the Claim creation
-
-/**
- * allowed verbs for a Claim
- */
-export const ALLOWED_VERBS = ["admin", "read"];
 
 /**
  * given a verb, it throws an error if it is not one of the allowed ones.
@@ -19,7 +16,7 @@ export const ALLOWED_VERBS = ["admin", "read"];
 function checkVerb(verb: string): void {
   if (ALLOWED_VERBS.includes(verb)) return;
 
-  throw new Error(`the verb is not one of the allowed verbs: ${ALLOWED_VERBS}`);
+  throw new InvalidVerbError(verb);
 }
 
 export interface IClaimData {
@@ -37,10 +34,17 @@ function extractFromString(s: string): IClaimData {
   const resourceMatch = CLAIM_REGEX.exec(s);
   if (resourceMatch) {
     checkVerb(resourceMatch[1]);
-    return { verb: resourceMatch[1], resource: resourceMatch[2] };
+
+    const resource = resourceMatch[2];
+
+    if (resource.includes("..")) {
+      throw new InvalidPatternError(s);
+    }
+
+    return { verb: resourceMatch[1], resource };
   }
 
-  throw new Error("cannot recognise verb and resource, it is neither `verb:*` or `verb:some.resource`");
+  throw new InvalidPatternError(s);
 }
 
 export function extractVerbResource(stringOrData: string | IClaimData | Claim): IClaimData {
