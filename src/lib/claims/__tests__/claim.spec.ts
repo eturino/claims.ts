@@ -1,5 +1,12 @@
 import { buildClaim, Claim, extractVerbResource, IClaimData } from "../claim";
 import { isValidClaimString } from "../is-valid-claim-string";
+import { AllowedVerb } from "../rules";
+
+describe("new Claim()", () => {
+  it("fails with wrong verb", () => {
+    expect(() => new Claim({ verb: "bad" as AllowedVerb, resource: "resource" })).toThrowError();
+  });
+});
 
 describe("buildClaim()", () => {
   it("with empty string: error", async () => {

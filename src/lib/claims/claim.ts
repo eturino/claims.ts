@@ -1,39 +1,34 @@
 import has from "lodash.has";
 import isObject from "lodash.isobject";
 import isString from "lodash.isstring";
-import { ALLOWED_VERBS } from "../..";
 import { InvalidPatternError, InvalidVerbError } from "./errors";
+import { AllowedVerb, isAllowedVerb } from "./rules";
 
 const CLAIM_REGEX = /^([\w_\-]+):([\w_.\-]+\w)(\.\*)?$/; // allows for the optional `.*` at the end, that will be ignored on the Claim creation
 const GLOBAL_WILDCARD_CLAIM_REGEX = /^([\w_\-]+):\*$/; // cater for `read:*` global claims
 // const QUERY_RESOURCE_REGEX = /^([\w_.\-]+\w)(\.\*)?$/; // allows for the optional `.*` at the end, that will be ignored on the Claim creation
 
-/**
- * given a verb, it throws an error if it is not one of the allowed ones.
- *
- * @param verb
- */
-function checkVerb(verb: string): void {
-  if (ALLOWED_VERBS.includes(verb)) return;
-
-  throw new InvalidVerbError(verb);
-}
-
 export interface IClaimData {
-  verb: string;
+  verb: AllowedVerb;
   resource: string | null;
 }
 
 function extractFromString(s: string): IClaimData {
   const globalMatch = GLOBAL_WILDCARD_CLAIM_REGEX.exec(s);
   if (globalMatch) {
-    checkVerb(globalMatch[1]);
-    return { verb: globalMatch[1], resource: null };
+    const verb = globalMatch[1];
+    if (!isAllowedVerb(verb)) {
+      throw new InvalidVerbError(verb);
+    }
+    return { verb, resource: null };
   }
 
   const resourceMatch = CLAIM_REGEX.exec(s);
   if (resourceMatch) {
-    checkVerb(resourceMatch[1]);
+    const verb = resourceMatch[1];
+    if (!isAllowedVerb(verb)) {
+      throw new InvalidVerbError(verb);
+    }
 
     const resource = resourceMatch[2];
 
@@ -41,7 +36,7 @@ function extractFromString(s: string): IClaimData {
       throw new InvalidPatternError(s);
     }
 
-    return { verb: resourceMatch[1], resource };
+    return { verb, resource };
   }
 
   throw new InvalidPatternError(s);
@@ -78,13 +73,15 @@ export class Claim {
     }
     return this._resourceParts;
   }
-  public readonly verb: string;
+  public readonly verb: AllowedVerb;
   public readonly resource: string | null;
 
   private _resourceParts: string[] | null = null;
 
   constructor({ verb, resource }: IClaimData) {
-    checkVerb(verb);
+    if (!isAllowedVerb(verb)) {
+      throw new InvalidVerbError(verb);
+    }
     this.verb = verb;
     this.resource = resource;
   }

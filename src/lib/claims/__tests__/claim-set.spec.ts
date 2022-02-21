@@ -1,5 +1,6 @@
 import { buildClaim } from "../claim";
 import { buildClaimSet, ClaimSet } from "../claim-set";
+import { FrozenClaimSetError } from "../errors";
 
 describe("buildClaimSet()", () => {
   it('with [""]: error', async () => {
@@ -105,5 +106,97 @@ describe("ClaimSet#directDescendants", () => {
     expect(secondFn.mock.calls.length).toBe(1);
     expect(thirdFn.mock.calls.length).toBe(1);
     expect(fourthFn.mock.calls.length).toBe(1);
+  });
+});
+
+describe("ClaimSet#isFrozen", () => {
+  it("frozen by default", () => {
+    const claimSet = new ClaimSet([]);
+    expect(claimSet.isFrozen()).toBeTruthy();
+  });
+});
+
+describe("ClaimSet#freeze", () => {
+  it("disallows modifications of the claim set list", () => {
+    const claimSet = new ClaimSet([]);
+    claimSet.freeze();
+    expect(claimSet.isFrozen()).toBeTruthy();
+  });
+});
+
+describe("ClaimSet#unfreeze", () => {
+  it("allows modifications of the claim set list", () => {
+    const claimSet = new ClaimSet([]);
+    claimSet.freeze();
+    expect(claimSet.isFrozen()).toBeTruthy();
+    claimSet.unfreeze();
+    expect(claimSet.isFrozen()).toBeFalsy();
+    claimSet.freeze();
+    expect(claimSet.isFrozen()).toBeTruthy();
+  });
+});
+
+// addIfNotChecked
+// addIfNotExact
+describe("ClaimSet#addIfNotChecked", () => {
+  it("throws with frozen ClaimSet", () => {
+    const claimSet = new ClaimSet([]);
+    claimSet.freeze();
+    expect(() => claimSet.addIfNotChecked(buildClaim("read:*"))).toThrow(FrozenClaimSetError);
+    expect(() => claimSet.addIfNotChecked("read:*")).toThrow(FrozenClaimSetError);
+    expect(() => claimSet.addIfNotChecked({ verb: "read", resource: "" })).toThrow(FrozenClaimSetError);
+    expect(() => claimSet.addIfNotChecked({ verb: "read", resource: "paco" })).toThrow(FrozenClaimSetError);
+  });
+
+  it("if same exist, does nothing", () => {
+    const claimSet = buildClaimSet(["read:something"]);
+    claimSet.unfreeze();
+    claimSet.addIfNotChecked("read:something");
+    expect(claimSet.claims.map((x) => x.toString())).toEqual(["read:something"]);
+  });
+
+  it("if parent exist, does nothing", () => {
+    const claimSet = buildClaimSet(["read:*"]);
+    claimSet.unfreeze();
+    claimSet.addIfNotChecked("read:something");
+    expect(claimSet.claims.map((x) => x.toString())).toEqual(["read:*"]);
+  });
+
+  it("else, adds it in order", () => {
+    const claimSet = buildClaimSet(["read:something"]);
+    claimSet.unfreeze();
+    claimSet.addIfNotChecked("read:alpha");
+    expect(claimSet.claims.map((x) => x.toString())).toEqual(["read:alpha", "read:something"]);
+  });
+});
+describe("ClaimSet#addIfNotExact", () => {
+  it("throws with frozen ClaimSet", () => {
+    const claimSet = new ClaimSet([]);
+    claimSet.freeze();
+    expect(() => claimSet.addIfNotExact(buildClaim("read:*"))).toThrow(FrozenClaimSetError);
+    expect(() => claimSet.addIfNotExact("read:*")).toThrow(FrozenClaimSetError);
+    expect(() => claimSet.addIfNotExact({ verb: "read", resource: "" })).toThrow(FrozenClaimSetError);
+    expect(() => claimSet.addIfNotExact({ verb: "read", resource: "paco" })).toThrow(FrozenClaimSetError);
+  });
+
+  it("if same exist, does nothing", () => {
+    const claimSet = buildClaimSet(["read:something"]);
+    claimSet.unfreeze();
+    claimSet.addIfNotExact("read:something");
+    expect(claimSet.claims.map((x) => x.toString())).toEqual(["read:something"]);
+  });
+
+  it("if parent exist, adds the claim in order", () => {
+    const claimSet = buildClaimSet(["read:*"]);
+    claimSet.unfreeze();
+    claimSet.addIfNotExact("read:something");
+    expect(claimSet.claims.map((x) => x.toString())).toEqual(["read:*", "read:something"]);
+  });
+
+  it("else, adds it in order", () => {
+    const claimSet = buildClaimSet(["read:something"]);
+    claimSet.unfreeze();
+    claimSet.addIfNotChecked("read:alpha");
+    expect(claimSet.claims.map((x) => x.toString())).toEqual(["read:alpha", "read:something"]);
   });
 });

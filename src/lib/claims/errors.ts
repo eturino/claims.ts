@@ -11,3 +11,5 @@ export class InvalidPatternError extends Error {
     super(`the given raw string cannot be parsed as a claim ${JSON.stringify(raw)}`);
   }
 }
+
+export class FrozenClaimSetError extends Error {}
