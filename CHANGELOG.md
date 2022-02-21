@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/eturino/claims.ts/compare/v0.1.10...v0.2.0) (2022-02-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* The type of the `verb` of a claim is now AllowedVerbs which is `"admin" | "read"`
+
+### Features
+
+* frozen claim set ([dfbf30d](https://github.com/eturino/claims.ts/commit/dfbf30d278dd18fbbbbeee33a8e7e2c50bfd5fd1))
+
 ### [0.1.10](https://github.com/eturino/claims.ts/compare/v0.1.9...v0.1.10) (2022-02-16)
 
 
