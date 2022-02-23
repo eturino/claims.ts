@@ -12,10 +12,25 @@ export class ClaimSet {
     this.frozen = true;
   }
 
+  protected _jsonString: string | null = null;
   /**
-   * disallow any changes to the claim set
+   * returns a string with the JSON representation of the claim set
+   *
+   * It is calculated only once and then memoized, but resets if the claimSet gets unfrozen
+   */
+  public toJSONString(): string {
+    if (!this._jsonString) {
+      this._jsonString = JSON.stringify(this.claims.map((x) => x.toString()));
+    }
+
+    return this._jsonString;
+  }
+
+  /**
+   * disallow any changes to the claim set. Resets the JSON string
    */
   public freeze(): void {
+    this._jsonString = null;
     this.frozen = true;
   }
 
@@ -118,7 +133,7 @@ export class ClaimSet {
  * @see ClaimSet
  */
 export function buildClaimSet(list: (string | IClaimData | Claim)[]): ClaimSet {
-  const claims = list.map((s) => buildClaim(s));
+  const claims = list.map((s) => buildClaim(s)).sort();
 
   return new ClaimSet(claims);
 }

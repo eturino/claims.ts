@@ -11,7 +11,7 @@ describe("buildClaimSet()", () => {
   });
   it('with ["read:*", "admin:valid"]: ClaimSet', async () => {
     const claimSet = buildClaimSet(["read:*", "admin:valid"]);
-    const expectedClaims = [buildClaim("read:*"), buildClaim("admin:valid")];
+    const expectedClaims = [buildClaim("admin:valid"), buildClaim("read:*")];
     expect(claimSet).toBeInstanceOf(ClaimSet);
     expect(claimSet.claims).toEqual(expectedClaims);
     expect(claimSet.claims[0]).not.toBe(expectedClaims[0]);
@@ -21,7 +21,7 @@ describe("buildClaimSet()", () => {
     const first = buildClaim("read:*");
     const second = buildClaim("admin:valid");
     const claimSet = buildClaimSet([first, second]);
-    const expectedClaims = [first, second];
+    const expectedClaims = [second, first];
     expect(claimSet).toBeInstanceOf(ClaimSet);
     expect(claimSet.claims).toEqual(expectedClaims);
     expect(claimSet.claims[0]).not.toBe(expectedClaims[0]);
@@ -136,8 +136,26 @@ describe("ClaimSet#unfreeze", () => {
   });
 });
 
-// addIfNotChecked
-// addIfNotExact
+describe("ClaimSet#toJSONString", () => {
+  it("works with empty claim set", () => {
+    const claimSet = new ClaimSet([]);
+    expect(claimSet.toJSONString()).toEqual("[]");
+
+    const claimSet2 = buildClaimSet(JSON.parse(claimSet.toJSONString()));
+    expect(claimSet2.toJSONString()).toEqual(claimSet.toJSONString());
+    expect(claimSet2).toEqual(claimSet);
+  });
+
+  it("works with non-empty claim set", () => {
+    const claimSet = buildClaimSet(["read:what.stuff", "read:something"]);
+    expect(claimSet.toJSONString()).toEqual('["read:something","read:what.stuff"]');
+
+    const claimSet2 = buildClaimSet(JSON.parse(claimSet.toJSONString()));
+    expect(claimSet2.toJSONString()).toEqual(claimSet.toJSONString());
+    expect(claimSet2).toEqual(claimSet);
+  });
+});
+
 describe("ClaimSet#addIfNotChecked", () => {
   it("throws with frozen ClaimSet", () => {
     const claimSet = new ClaimSet([]);

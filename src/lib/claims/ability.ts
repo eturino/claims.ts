@@ -6,6 +6,13 @@ export class Ability {
   constructor(public readonly permitted: ClaimSet, public readonly prohibited: ClaimSet) {}
 
   /**
+   * returns a string with the permitted and prohibited jsons inside, for caching purposes
+   */
+  get cacheID(): string {
+    return `(${this.permitted.toJSONString()},${this.prohibited.toJSONString()})`;
+  }
+
+  /**
    * inverse of `can()`
    * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
    *

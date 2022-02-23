@@ -22,6 +22,8 @@ describe("buildAbility()", () => {
     expect(ability.permitted.claims).toEqual([firstClaim]);
     expect(ability.prohibited).toBeInstanceOf(ClaimSet);
     expect(ability.prohibited.claims).toEqual([secondClaim]);
+
+    expect(ability.cacheID).toEqual('(["read:*"],["read:something"])');
   });
 });
 
