@@ -6,6 +6,13 @@ export class Ability {
   constructor(public readonly permitted: ClaimSet, public readonly prohibited: ClaimSet) {}
 
   /**
+   Returns a new ability with clones with the claim sets
+   */
+  public clone(): Ability {
+    return new Ability(this.permitted.clone(), this.prohibited.clone());
+  }
+
+  /**
    * returns a string with the permitted and prohibited jsons inside, for caching purposes
    */
   get cacheID(): string {

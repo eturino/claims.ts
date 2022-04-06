@@ -73,7 +73,7 @@
     "lodash.uniq": "^4.5.0"
   },
   "peerDependencies": {
-    "@eturino/key-set": "^4.8.0"
+    "@eturino/key-set": "^5.0.0"
   },
   "devDependencies": {
     "@bitjson/npm-scripts-info": "^1.0.0",

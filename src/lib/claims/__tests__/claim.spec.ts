@@ -8,6 +8,15 @@ describe("new Claim()", () => {
   });
 });
 
+describe("Claim#clone", () => {
+  it("makes a clone", () => {
+    const original = buildClaim("read:*");
+    const cloned = original.clone();
+    expect(cloned).not.toBe(original);
+    expect(cloned).toEqual(original);
+  });
+});
+
 describe("buildClaim()", () => {
   it("with empty string: error", async () => {
     expect(() => buildClaim("")).toThrowError();

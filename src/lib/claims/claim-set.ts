@@ -27,6 +27,13 @@ export class ClaimSet {
   }
 
   /**
+   * returns a new ClaimSet with clones of the same claims
+   */
+  public clone(): ClaimSet {
+    return new ClaimSet(this.claims.map((x) => x.clone()));
+  }
+
+  /**
    * disallow any changes to the claim set. Resets the JSON string
    */
   public freeze(): void {

@@ -29,6 +29,23 @@ describe("buildClaimSet()", () => {
   });
 });
 
+describe("ClaimSet#clone", () => {
+  it("makes a clone", () => {
+    const first = buildClaim("read:*");
+    const second = buildClaim("admin:valid");
+    const claimSet = new ClaimSet([first, second]);
+    const cloned = claimSet.clone();
+    expect(cloned).not.toBe(claimSet);
+    expect(cloned).toEqual(claimSet);
+    expect(cloned.claims).toEqual(claimSet.claims);
+    expect(cloned.claims).not.toBe(claimSet.claims);
+    expect(cloned.claims[0]).toEqual(claimSet.claims[0]);
+    expect(cloned.claims[0]).not.toBe(claimSet.claims[0]);
+    expect(cloned.claims[1]).toEqual(claimSet.claims[1]);
+    expect(cloned.claims[1]).not.toBe(claimSet.claims[1]);
+  });
+});
+
 describe("ClaimSet#check", () => {
   it("returns true if any of the claims return true", async () => {
     const first = buildClaim("read:*");

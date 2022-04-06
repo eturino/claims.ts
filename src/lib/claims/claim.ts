@@ -87,6 +87,13 @@ export class Claim {
   }
 
   /**
+   * returns a new Claim with the same data
+   */
+  public clone(): Claim {
+    return new Claim({ verb: this.verb, resource: this.resource });
+  }
+
+  /**
    * returns `verb:resource` (if global, it will return `verb:*`)
    */
   public toString(): string {
