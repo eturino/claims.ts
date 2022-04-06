@@ -1,6 +1,6 @@
 {
   "name": "@eturino/claims",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "author": "Eduardo Turiño <eturino@eturino.com>",
   "description": "Claim, ClaimSet and Ability for permissions (Typescript port of https://github.com/eturino/claims)",
   "main": "build/main/index.js",

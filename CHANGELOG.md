@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/eturino/claims.ts/compare/v0.2.1...v0.3.0) (2022-04-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* the peer dependency of @eturino/key-set is updated to v5.x
+
+### Features
+
+* adding clone() and updating to KeySet 5.x ([1e02765](https://github.com/eturino/claims.ts/commit/1e02765af382e53851c433458328b50340be7edb))
+
 ### [0.2.1](https://github.com/eturino/claims.ts/compare/v0.2.0...v0.2.1) (2022-02-23)
 
 
