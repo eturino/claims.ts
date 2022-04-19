@@ -903,9 +903,9 @@
     "@types/lodash" "*"
 
 "@types/lodash.some@^4.6.6":
-  version "4.6.6"
-  resolved "https://registry.yarnpkg.com/@types/lodash.some/-/lodash.some-4.6.6.tgz#6b79f350f7031aee8d93edde3e5b5e8147d9b74b"
-  integrity sha512-7MNJlK+WU2udp6QhxWDp3e05cjYq1v34JMpVVucal7XcZSlC1mZS3Gvdo/z/rL9CZgXXhoGvXerkfT+B8AfZEg==
+  version "4.6.7"
+  resolved "https://registry.yarnpkg.com/@types/lodash.some/-/lodash.some-4.6.7.tgz#827cd4372857ab058515a63e87071df8be2d63d5"
+  integrity sha512-RA8+uBPdrCNxuUFQUVQ0exAJ2iU1L4UyltrmhChbZXYsEewS2QRE7wIcp1sHsjUpwA+6++Yfk/lupGLYr6zbUg==
   dependencies:
     "@types/lodash" "*"
 
