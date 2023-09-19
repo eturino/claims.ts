@@ -1,6 +1,4 @@
-import has from "lodash.has";
-import isObject from "lodash.isobject";
-import isString from "lodash.isstring";
+import { has, isObject, isString } from "lodash";
 import { InvalidPatternError, InvalidVerbError } from "./errors";
 import { AllowedVerb, isAllowedVerb } from "./rules";
 

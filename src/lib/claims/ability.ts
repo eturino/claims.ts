@@ -3,7 +3,10 @@ import { Claim, extractVerbResource, IClaimData } from "./claim";
 import { buildClaimSet, ClaimSet } from "./claim-set";
 
 export class Ability {
-  constructor(public readonly permitted: ClaimSet, public readonly prohibited: ClaimSet) {}
+  constructor(
+    public readonly permitted: ClaimSet,
+    public readonly prohibited: ClaimSet
+  ) {}
 
   /**
    Returns a new ability with clones with the claim sets

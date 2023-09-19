@@ -1,8 +1,4 @@
-import compact from "lodash.compact";
-import map from "lodash.map";
-import some from "lodash.some";
-import uniq from "lodash.uniq";
-
+import { compact, map, some, uniq } from "lodash";
 import { buildClaim, Claim, extractVerbResource, IClaimData } from "./claim";
 import { FrozenClaimSetError } from "./errors";
 

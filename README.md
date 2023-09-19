@@ -24,7 +24,7 @@ Library bootstrapped using [typescript-starter](https://github.com/bitjson/types
 
 ## Usage
 
-TBD
+Allowed verbs: "admin", "read", "delete", "create", "update", "manage".
 
 see the [type docs](https://eturino.github.io/claims.ts) for now
 
