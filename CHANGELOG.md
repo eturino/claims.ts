@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/eturino/claims.ts/compare/v0.3.0...v0.3.1) (2023-09-19)
+
+
+### Features
+
+* adding more allowed verbs: "admin", "read", "delete", "create", "update", "manage" ([6e90a42](https://github.com/eturino/claims.ts/commit/6e90a42a9fc6f7b59d26ffd93b78ef9b35050322))
+
 ## [0.3.0](https://github.com/eturino/claims.ts/compare/v0.2.1...v0.3.0) (2022-04-06)
 
 
