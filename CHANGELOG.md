@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/eturino/claims.ts/compare/v0.3.1...v0.4.1) (2024-11-05)
+
+
+### Features
+
+* replace lodash with es-toolkit, plus migrating to new project structure, ci, and tooling ([#548](https://github.com/eturino/claims.ts/issues/548)) ([d8342fe](https://github.com/eturino/claims.ts/commit/d8342fe3bdfcd70192a4a2eed79b3cc038087c6d))
+
 ### [0.3.1](https://github.com/eturino/claims.ts/compare/v0.3.0...v0.3.1) (2023-09-19)
 
 

@@ -1,11 +1,13 @@
 {
   "name": "claims.ts",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Claim, ClaimSet and Ability for permissions (Typescript port of https://github.com/eturino/claims)",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "commit": "git-cz",
     "build": "tsup",
@@ -28,7 +30,10 @@
   },
   "homepage": "https://github.com/eturino/claims.ts",
   "license": "MIT",
-  "keywords": ["claims", "permissions"],
+  "keywords": [
+    "claims",
+    "permissions"
+  ],
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@commitlint/cli": "^19.5.0",
