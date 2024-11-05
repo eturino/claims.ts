@@ -1,4 +1,4 @@
-import { compact, map, some, uniq } from "lodash";
+import { compact, uniq } from "es-toolkit";
 import { type Claim, type IClaimData, buildClaim, extractVerbResource } from "./claim";
 import { FrozenClaimSetError } from "./errors";
 
@@ -87,7 +87,7 @@ export class ClaimSet {
    */
   public check(query: string | IClaimData | Claim): boolean {
     const parsedQuery = extractVerbResource(query);
-    return some(this.claims, (claim: Claim) => claim.check(parsedQuery));
+    return this.claims.some((claim: Claim) => claim.check(parsedQuery));
   }
 
   /**
@@ -98,7 +98,7 @@ export class ClaimSet {
    */
   public hasExact(query: string | IClaimData | Claim): boolean {
     const parsedQuery = extractVerbResource(query);
-    return some(this.claims, (claim: Claim) => claim.isExact(parsedQuery));
+    return this.claims.some((claim: Claim) => claim.isExact(parsedQuery));
   }
 
   /**
@@ -124,7 +124,7 @@ export class ClaimSet {
     fn: (claim: Claim, parsedQuery: IClaimData) => string | null,
   ): string[] {
     const parsedQuery = extractVerbResource(query);
-    const list = map(this.claims, (claim) => fn(claim, parsedQuery));
+    const list = this.claims.map((claim) => fn(claim, parsedQuery));
     return uniq(compact(list)).sort();
   }
 }
