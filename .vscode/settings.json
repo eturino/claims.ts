@@ -7,7 +7,7 @@
     "editor.defaultFormatter": "biomejs.biome"
   },
   "cSpell.language": "en-GB",
-  "cSpell.words": ["eturino"]
+  "cSpell.words": ["commitlint", "eturino", "tsup"]
   // "typescript.implementationsCodeLens.enabled": true
   // "typescript.referencesCodeLens.enabled": true
 }
