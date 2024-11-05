@@ -1,5 +1,7 @@
 src
 test
+**/__test__/
+**/__tests__/
 tsconfig.json
 tsconfig.module.json
 .eslint*

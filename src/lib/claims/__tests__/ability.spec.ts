@@ -1,7 +1,8 @@
-import { Ability, buildAbility } from "../ability";
-import { buildClaim } from "../claim";
-import { buildClaimSet, ClaimSet } from "../claim-set";
+import { describe, expect, it, vi } from "vitest";
+
 import { KeySetAll, KeySetAllExceptSome, KeySetNone, KeySetSome } from "@eturino/key-set";
+
+import { Ability, ClaimSet, buildAbility, buildClaim, buildClaimSet } from "../../..";
 
 describe("buildAbility()", () => {
   it('with [""] and ["read:valid"]: error', () => {
@@ -59,8 +60,8 @@ describe("Ability#can", () => {
     const prohibited = buildClaimSet([]);
     const ability = new Ability(permitted, prohibited);
 
-    const permittedFn = jest.fn(() => true);
-    const prohibitedFn = jest.fn(() => false);
+    const permittedFn = vi.fn(() => true);
+    const prohibitedFn = vi.fn(() => false);
     permitted.check = permittedFn;
     prohibited.check = prohibitedFn;
 
@@ -76,8 +77,8 @@ describe("Ability#cannot", () => {
     const prohibited = buildClaimSet([]);
     const ability = new Ability(permitted, prohibited);
 
-    const permittedFn = jest.fn(() => true);
-    const prohibitedFn = jest.fn(() => false);
+    const permittedFn = vi.fn(() => true);
+    const prohibitedFn = vi.fn(() => false);
     permitted.check = permittedFn;
     prohibited.check = prohibitedFn;
 
@@ -93,8 +94,8 @@ describe("Ability#isExplicitlyProhibited", () => {
     const prohibited = buildClaimSet([]);
     const ability = new Ability(permitted, prohibited);
 
-    const permittedFn = jest.fn(() => true);
-    const prohibitedFn = jest.fn(() => true);
+    const permittedFn = vi.fn(() => true);
+    const prohibitedFn = vi.fn(() => true);
     permitted.check = permittedFn;
     prohibited.check = prohibitedFn;
 
@@ -108,8 +109,8 @@ describe("Ability#isExplicitlyProhibited", () => {
     const prohibited = buildClaimSet([]);
     const ability = new Ability(permitted, prohibited);
 
-    const permittedFn = jest.fn(() => false);
-    const prohibitedFn = jest.fn(() => false);
+    const permittedFn = vi.fn(() => false);
+    const prohibitedFn = vi.fn(() => false);
     permitted.check = permittedFn;
     prohibited.check = prohibitedFn;
 
@@ -125,8 +126,8 @@ describe("Ability#isExplicitlyProhibited", () => {
     const prohibited = buildClaimSet([]);
     const ability = new Ability(permitted, prohibited);
 
-    const permittedFn = jest.fn(() => true);
-    const prohibitedFn = jest.fn(() => true);
+    const permittedFn = vi.fn(() => true);
+    const prohibitedFn = vi.fn(() => true);
     permitted.check = permittedFn;
     prohibited.check = prohibitedFn;
 
@@ -140,8 +141,8 @@ describe("Ability#isExplicitlyProhibited", () => {
     const prohibited = buildClaimSet([]);
     const ability = new Ability(permitted, prohibited);
 
-    const permittedFn = jest.fn(() => false);
-    const prohibitedFn = jest.fn(() => false);
+    const permittedFn = vi.fn(() => false);
+    const prohibitedFn = vi.fn(() => false);
     permitted.check = permittedFn;
     prohibited.check = prohibitedFn;
 
@@ -180,7 +181,7 @@ describe("Ability#accessToResources", () => {
       it("returns KeySetSome(third)", () => {
         const ability = buildAbility(
           ["read:clients.first.some.stuff", "read:clients.third.other.things"],
-          ["read:clients.first", "read:clients.second"]
+          ["read:clients.first", "read:clients.second"],
         );
         const keySet = ability.accessToResources("read:clients");
         expect(keySet).toBeInstanceOf(KeySetSome);
@@ -243,7 +244,7 @@ describe("Ability#accessToResources", () => {
           [
             "read:clients.my-client.projects.project.one-project.people",
             "read:clients.my-client.projects.project.bad-project",
-          ]
+          ],
         );
 
         const keySet = ability.accessToResources("read:clients.my-client.projects.project");

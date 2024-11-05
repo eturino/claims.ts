@@ -1,11 +1,11 @@
-import { KeySet, all, some } from "@eturino/key-set";
-import { Claim, extractVerbResource, IClaimData } from "./claim";
-import { buildClaimSet, ClaimSet } from "./claim-set";
+import { type KeySet, all, some } from "@eturino/key-set";
+import { type Claim, type IClaimData, extractVerbResource } from "./claim";
+import { type ClaimSet, buildClaimSet } from "./claim-set";
 
 export class Ability {
   constructor(
     public readonly permitted: ClaimSet,
-    public readonly prohibited: ClaimSet
+    public readonly prohibited: ClaimSet,
   ) {}
 
   /**
@@ -78,7 +78,7 @@ export class Ability {
  */
 export function buildAbility(
   permittedStrings: (string | IClaimData | Claim)[],
-  prohibitedStrings: (string | IClaimData | Claim)[]
+  prohibitedStrings: (string | IClaimData | Claim)[],
 ): Ability {
   const permitted = buildClaimSet(permittedStrings);
   const prohibited = buildClaimSet(prohibitedStrings);

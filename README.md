@@ -1,8 +1,6 @@
 # Claims (typescript)
 
-[![Build Status](https://travis-ci.org/eturino/claims.ts.svg?branch=master)](https://travis-ci.org/eturino/claims.ts)
 [![npm version](https://badge.fury.io/js/%40eturino%2Fclaims.svg)](https://badge.fury.io/js/%40eturino%2Fclaims)
-[![codebeat badge](https://codebeat.co/badges/8e4607db-3fca-48e8-b6cd-5dd0549d2558)](https://codebeat.co/projects/github-com-eturino-claims-ts-master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a705d5a15d65e2a70a9a/maintainability)](https://codeclimate.com/github/eturino/claims.ts/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a705d5a15d65e2a70a9a/test_coverage)](https://codeclimate.com/github/eturino/claims.ts/test_coverage)
 

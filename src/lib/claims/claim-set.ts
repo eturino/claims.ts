@@ -1,5 +1,5 @@
 import { compact, map, some, uniq } from "lodash";
-import { buildClaim, Claim, extractVerbResource, IClaimData } from "./claim";
+import { type Claim, type IClaimData, buildClaim, extractVerbResource } from "./claim";
 import { FrozenClaimSetError } from "./errors";
 
 export class ClaimSet {
@@ -121,7 +121,7 @@ export class ClaimSet {
 
   private mapInClaims(
     query: string | IClaimData | Claim,
-    fn: (claim: Claim, parsedQuery: IClaimData) => string | null
+    fn: (claim: Claim, parsedQuery: IClaimData) => string | null,
   ): string[] {
     const parsedQuery = extractVerbResource(query);
     const list = map(this.claims, (claim) => fn(claim, parsedQuery));

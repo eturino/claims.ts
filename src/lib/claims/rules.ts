@@ -3,6 +3,9 @@
  */
 export const ALLOWED_VERBS = ["admin", "read", "delete", "create", "update", "manage"] as const;
 
+/**
+ * allowed verbs for a Claim
+ */
 export type AllowedVerb = (typeof ALLOWED_VERBS)[number];
 
 /**
