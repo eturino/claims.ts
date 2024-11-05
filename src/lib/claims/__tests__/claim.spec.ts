@@ -1,6 +1,8 @@
-import { buildClaim, Claim, extractVerbResource, IClaimData } from "../claim";
+import { describe, expect, it } from "vitest";
+
+import { ALLOWED_VERBS, type AllowedVerb } from "../../..";
+import { Claim, type IClaimData, buildClaim, extractVerbResource } from "../claim";
 import { isValidClaimString } from "../is-valid-claim-string";
-import { ALLOWED_VERBS, AllowedVerb } from "../rules";
 
 describe("new Claim()", () => {
   it("fails with wrong verb", () => {
@@ -30,7 +32,7 @@ describe("buildClaim()", () => {
     expect(() => buildClaim("blah:*")).toThrowError();
   });
 
-  ALLOWED_VERBS.forEach((verb) => {
+  for (const verb of ALLOWED_VERBS) {
     it(`with '${verb}:what': builds Claim (${verb}: what)`, async () => {
       const claim = buildClaim(`${verb}:what`);
       expect(claim).toBeInstanceOf(Claim);
@@ -39,7 +41,7 @@ describe("buildClaim()", () => {
       expect(claim.resource).toEqual("what");
       expect(claim.isGlobal()).toBeFalsy();
     });
-  });
+  }
 
   it("with 'admin:what': builds Claim (admin: what)", async () => {
     const claim = buildClaim("admin:what");

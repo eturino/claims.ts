@@ -1,6 +1,6 @@
-import { has, isObject, isString } from "lodash";
+import { isPlainObject, isString } from "es-toolkit";
 import { InvalidPatternError, InvalidVerbError } from "./errors";
-import { AllowedVerb, isAllowedVerb } from "./rules";
+import { type AllowedVerb, isAllowedVerb } from "./rules";
 
 const CLAIM_REGEX = /^([\w_\-]+):([\w_.\-]+\w)(\.\*)?$/; // allows for the optional `.*` at the end, that will be ignored on the Claim creation
 const GLOBAL_WILDCARD_CLAIM_REGEX = /^([\w_\-]+):\*$/; // cater for `read:*` global claims
@@ -41,7 +41,6 @@ function extractFromString(s: string): IClaimData {
 }
 
 export function extractVerbResource(stringOrData: string | IClaimData | Claim): IClaimData {
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   if (stringOrData instanceof Claim) {
     return { verb: stringOrData.verb, resource: stringOrData.resource };
   }
@@ -50,12 +49,12 @@ export function extractVerbResource(stringOrData: string | IClaimData | Claim): 
     return extractFromString(stringOrData);
   }
 
-  if (isObject(stringOrData) && has(stringOrData, "verb")) {
+  if (isPlainObject(stringOrData) && "verb" in stringOrData) {
     return { verb: stringOrData.verb, resource: stringOrData.resource || null };
   }
 
   throw new Error(
-    "cannot recognise verb and resource, it is neither `verb:*` or `verb:some.resource` string or an object with `verb` and `resource`"
+    "cannot recognise verb and resource, it is neither `verb:*` or `verb:some.resource` string or an object with `verb` and `resource`",
   );
 }
 

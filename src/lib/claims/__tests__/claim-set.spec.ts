@@ -1,6 +1,6 @@
-import { buildClaim } from "../claim";
-import { buildClaimSet, ClaimSet } from "../claim-set";
-import { FrozenClaimSetError } from "../errors";
+import { describe, expect, it, vi } from "vitest";
+
+import { ClaimSet, FrozenClaimSetError, buildClaim, buildClaimSet } from "../../..";
 
 describe("buildClaimSet()", () => {
   it('with [""]: error', async () => {
@@ -52,8 +52,8 @@ describe("ClaimSet#check", () => {
     const second = buildClaim("admin:valid");
     const claimSet = new ClaimSet([first, second]);
 
-    const firstCheck = jest.fn(() => false);
-    const secondCheck = jest.fn(() => false);
+    const firstCheck = vi.fn(() => false);
+    const secondCheck = vi.fn(() => false);
     first.check = firstCheck;
     second.check = secondCheck;
     expect(claimSet.check("read:something")).toBeFalsy(); // uses mocks!
@@ -66,8 +66,8 @@ describe("ClaimSet#check", () => {
     const second = buildClaim("admin:valid");
     const claimSet = new ClaimSet([first, second]);
 
-    const firstCheck = jest.fn(() => true);
-    const secondCheck = jest.fn(() => true);
+    const firstCheck = vi.fn(() => true);
+    const secondCheck = vi.fn(() => true);
     first.check = firstCheck;
     second.check = secondCheck;
     expect(claimSet.check("read:something")).toBeTruthy(); // uses mocks!
@@ -84,10 +84,10 @@ describe("ClaimSet#directChildren", () => {
     const fourth = buildClaim("admin:valid.another");
     const claimSet = new ClaimSet([first, second, third, fourth]);
 
-    const firstFn = jest.fn(() => null);
-    const secondFn = jest.fn(() => "paco");
-    const thirdFn = jest.fn(() => "alfa");
-    const fourthFn = jest.fn(() => "alfa");
+    const firstFn = vi.fn(() => null);
+    const secondFn = vi.fn(() => "paco");
+    const thirdFn = vi.fn(() => "alfa");
+    const fourthFn = vi.fn(() => "alfa");
     first.directChild = firstFn;
     second.directChild = secondFn;
     third.directChild = thirdFn;
@@ -109,10 +109,10 @@ describe("ClaimSet#directDescendants", () => {
     const fourth = buildClaim("admin:valid.another");
     const claimSet = new ClaimSet([first, second, third, fourth]);
 
-    const firstFn = jest.fn(() => null);
-    const secondFn = jest.fn(() => "paco");
-    const thirdFn = jest.fn(() => "alfa");
-    const fourthFn = jest.fn(() => "alfa");
+    const firstFn = vi.fn(() => null);
+    const secondFn = vi.fn(() => "paco");
+    const thirdFn = vi.fn(() => "alfa");
+    const fourthFn = vi.fn(() => "alfa");
     first.directDescendant = firstFn;
     second.directDescendant = secondFn;
     third.directDescendant = thirdFn;
