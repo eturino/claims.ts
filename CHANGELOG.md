@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.2](https://github.com/eturino/claims.ts/compare/v0.4.1...v0.4.2) (2024-11-05)
+
+
+### Bug Fixes
+
+* fixing tests and lodash usage ([7d15fb2](https://github.com/eturino/claims.ts/commit/7d15fb27dfef1858b47eaafaa42ae69d085f31ad))
+
 ### [0.4.1](https://github.com/eturino/claims.ts/compare/v0.3.1...v0.4.1) (2024-11-05)
 
 
