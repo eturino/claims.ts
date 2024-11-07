@@ -4,14 +4,12 @@ dist
 test
 src/**.js
 .idea/*
-.history
+.history/*
 yarn-error.log
 
 coverage
 .nyc_output
 *.log
-
-package-lock.json
 
 .DS_Store
 README.pdf

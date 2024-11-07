@@ -5,8 +5,8 @@ export default defineConfig({
     globals: true,
     environment: "node",
     coverage: {
-      include: ["src/**"],
-      exclude: ["**/__tests__/**", "**/commitlint.config.js"],
+      include: ["src/**/*.ts"],
+      reporter: ["text", "lcov"],
     }
   },
 });

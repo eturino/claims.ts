@@ -7,7 +7,23 @@
     "editor.defaultFormatter": "biomejs.biome"
   },
   "cSpell.language": "en-GB",
-  "cSpell.words": ["commitlint", "eturino", "tsup"]
+  "cSpell.words": [
+    "commitlint",
+    "Downcoder",
+    "falsey",
+    "lcov",
+    "parameterize",
+    "parameterizes",
+    "plandek",
+    "tsup",
+    "Turiño"
+  ],
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
   // "typescript.implementationsCodeLens.enabled": true
   // "typescript.referencesCodeLens.enabled": true
 }
