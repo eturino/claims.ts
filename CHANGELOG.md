@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.3](https://github.com/eturino/claims.ts/compare/v0.4.2...v0.4.3) (2024-11-20)
+
+
+### Features
+
+* enhance types to allow for readonly arguments ([a04ffe1](https://github.com/eturino/claims.ts/commit/a04ffe1ef06ef95a054d2482661f28790cf1d324))
+
+
+### Bug Fixes
+
+* **deps:** bump es-toolkit from 1.26.1 to 1.27.0 ([#549](https://github.com/eturino/claims.ts/issues/549)) ([07a09d3](https://github.com/eturino/claims.ts/commit/07a09d3ab3f41f04a2fdf01c65cf82cd4e4b1f9b))
+
 ### [0.4.2](https://github.com/eturino/claims.ts/compare/v0.4.1...v0.4.2) (2024-11-05)
 
 
