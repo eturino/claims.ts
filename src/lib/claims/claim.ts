@@ -40,7 +40,9 @@ function extractFromString(s: string): IClaimData {
   throw new InvalidPatternError(s);
 }
 
-export function extractVerbResource(stringOrData: string | IClaimData | Claim): IClaimData {
+export function extractVerbResource(
+  stringOrData: string | IClaimData | Claim | Readonly<IClaimData> | Readonly<Claim>,
+): IClaimData {
   if (stringOrData instanceof Claim) {
     return { verb: stringOrData.verb, resource: stringOrData.resource };
   }
@@ -75,7 +77,7 @@ export class Claim {
 
   private _resourceParts: string[] | null = null;
 
-  constructor({ verb, resource }: IClaimData) {
+  constructor({ verb, resource }: IClaimData | Readonly<IClaimData>) {
     if (!isAllowedVerb(verb)) {
       throw new InvalidVerbError(verb);
     }
@@ -117,7 +119,7 @@ export class Claim {
    *
    * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
    */
-  public check(query: string | IClaimData): boolean {
+  public check(query: string | IClaimData | Readonly<IClaimData> | Claim | Readonly<Claim>): boolean {
     const { verb, resource } = extractVerbResource(query);
     if (this.verb !== verb) return false;
 
@@ -135,7 +137,7 @@ export class Claim {
    *
    * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
    */
-  public isExact(query: string | IClaimData): boolean {
+  public isExact(query: string | IClaimData | Readonly<IClaimData> | Claim | Readonly<Claim>): boolean {
     const { verb, resource } = extractVerbResource(query);
     if (this.verb !== verb) return false;
     if (!resource) return this.isGlobal();
@@ -158,7 +160,7 @@ export class Claim {
    *
    * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
    */
-  public directChild(query: string | IClaimData): string | null {
+  public directChild(query: string | IClaimData | Readonly<IClaimData> | Claim | Readonly<Claim>): string | null {
     const { verb, resource } = extractVerbResource(query);
     return this.lookupDirectChild(verb, resource);
   }
@@ -169,7 +171,7 @@ export class Claim {
    * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
    * @see directChild
    */
-  public isDirectChild(query: string | IClaimData): boolean {
+  public isDirectChild(query: string | IClaimData | Readonly<IClaimData> | Claim | Readonly<Claim>): boolean {
     return !!this.directChild(query);
   }
 
@@ -188,7 +190,7 @@ export class Claim {
    *
    * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
    */
-  public directDescendant(query: string | IClaimData): string | null {
+  public directDescendant(query: string | IClaimData | Readonly<IClaimData> | Claim | Readonly<Claim>): string | null {
     const { verb, resource } = extractVerbResource(query);
     return this.lookupDirectDescendant(verb, resource);
   }
@@ -199,7 +201,7 @@ export class Claim {
    * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
    * @see isDirectDescendant
    */
-  public isDirectDescendant(query: string | IClaimData): boolean {
+  public isDirectDescendant(query: string | IClaimData | Readonly<IClaimData> | Claim | Readonly<Claim>): boolean {
     return !!this.directDescendant(query);
   }
 
@@ -235,6 +237,8 @@ export class Claim {
  * @see ALLOWED_VERBS
  * @see Claim
  */
-export function buildClaim(stringOrObject: string | IClaimData | Claim): Claim {
+export function buildClaim(
+  stringOrObject: string | IClaimData | Claim | Readonly<IClaimData> | Readonly<Claim>,
+): Claim {
   return new Claim(extractVerbResource(stringOrObject));
 }

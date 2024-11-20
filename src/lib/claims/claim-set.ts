@@ -55,7 +55,7 @@ export class ClaimSet {
    * if the given claim is not `check` in the claim set already it will add it
    * @param claim
    */
-  public addIfNotChecked(claim: string | IClaimData | Claim): void {
+  public addIfNotChecked(claim: string | IClaimData | Claim | Readonly<IClaimData> | Readonly<Claim>): void {
     if (this.frozen) {
       throw new FrozenClaimSetError("ClaimSet is frozen");
     }
@@ -69,7 +69,7 @@ export class ClaimSet {
    * if the given claim is not `hasExact` in the claim set already it will add it
    * @param claim
    */
-  public addIfNotExact(claim: string | IClaimData | Claim): void {
+  public addIfNotExact(claim: string | IClaimData | Claim | Readonly<IClaimData> | Readonly<Claim>): void {
     if (this.frozen) {
       throw new FrozenClaimSetError("ClaimSet is frozen");
     }
@@ -85,7 +85,7 @@ export class ClaimSet {
    * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
    * @see Claim
    */
-  public check(query: string | IClaimData | Claim): boolean {
+  public check(query: string | IClaimData | Claim | Readonly<IClaimData> | Readonly<Claim>): boolean {
     const parsedQuery = extractVerbResource(query);
     return this.claims.some((claim: Claim) => claim.check(parsedQuery));
   }
@@ -96,7 +96,7 @@ export class ClaimSet {
    * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
    * @see Claim
    */
-  public hasExact(query: string | IClaimData | Claim): boolean {
+  public hasExact(query: string | IClaimData | Claim | Readonly<IClaimData> | Readonly<Claim>): boolean {
     const parsedQuery = extractVerbResource(query);
     return this.claims.some((claim: Claim) => claim.isExact(parsedQuery));
   }
@@ -106,7 +106,7 @@ export class ClaimSet {
    * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
    * @see Claim
    */
-  public directChildren(query: string | IClaimData | Claim): string[] {
+  public directChildren(query: string | IClaimData | Claim | Readonly<IClaimData> | Readonly<Claim>): string[] {
     return this.mapInClaims(query, (claim, parsedQuery) => claim.directChild(parsedQuery));
   }
 
@@ -115,13 +115,13 @@ export class ClaimSet {
    * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
    * @see Claim
    */
-  public directDescendants(query: string | IClaimData | Claim): string[] {
+  public directDescendants(query: string | IClaimData | Claim | Readonly<IClaimData> | Readonly<Claim>): string[] {
     return this.mapInClaims(query, (claim, parsedQuery) => claim.directDescendant(parsedQuery));
   }
 
   private mapInClaims(
-    query: string | IClaimData | Claim,
-    fn: (claim: Claim, parsedQuery: IClaimData) => string | null,
+    query: string | IClaimData | Claim | Readonly<IClaimData> | Readonly<Claim>,
+    fn: (claim: Claim | Readonly<Claim>, parsedQuery: IClaimData | Readonly<IClaimData>) => string | null,
   ): string[] {
     const parsedQuery = extractVerbResource(query);
     const list = this.claims.map((claim) => fn(claim, parsedQuery));
@@ -135,7 +135,9 @@ export class ClaimSet {
  * @see buildClaim
  * @see ClaimSet
  */
-export function buildClaimSet(list: (string | IClaimData | Claim)[]): ClaimSet {
+export function buildClaimSet(
+  list: readonly (string | IClaimData | Claim | Readonly<IClaimData> | Readonly<Claim>)[],
+): ClaimSet {
   const claims = list.map((s) => buildClaim(s)).sort();
 
   return new ClaimSet(claims);

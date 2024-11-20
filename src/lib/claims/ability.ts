@@ -28,7 +28,7 @@ export class Ability {
    *
    * @see can
    */
-  public cannot(query: string | IClaimData | Claim): boolean {
+  public cannot(query: string | IClaimData | Claim | Readonly<IClaimData> | Readonly<Claim>): boolean {
     return !this.can(query);
   }
 
@@ -40,7 +40,7 @@ export class Ability {
    * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
    * @see ClaimSet
    */
-  public can(query: string | IClaimData | Claim): boolean {
+  public can(query: string | IClaimData | Claim | Readonly<IClaimData> | Readonly<Claim>): boolean {
     const parsedQuery = extractVerbResource(query);
     return this.permitted.check(parsedQuery) && !this.prohibited.check(parsedQuery);
   }
@@ -52,7 +52,7 @@ export class Ability {
    * @see ClaimSet
    * @see Claim
    */
-  public isExplicitlyProhibited(query: string | IClaimData | Claim): boolean {
+  public isExplicitlyProhibited(query: string | IClaimData | Claim | Readonly<IClaimData> | Readonly<Claim>): boolean {
     return this.prohibited.check(query);
   }
 
@@ -61,7 +61,7 @@ export class Ability {
    * allows on direct descendants, forbids on direct children
    * @param query can be a string ("verb:resource" or "verb:*") or an object with `verb` and `resource`
    */
-  accessToResources(query: string | IClaimData | Claim): KeySet<string> {
+  accessToResources(query: string | IClaimData | Claim | Readonly<IClaimData> | Readonly<Claim>): KeySet<string> {
     const allowed = this.permitted.check(query) ? all<string>() : some(this.permitted.directDescendants(query));
     const forbidden = this.prohibited.check(query) ? all<string>() : some(this.prohibited.directChildren(query));
 
@@ -77,8 +77,8 @@ export class Ability {
  * @see Ability
  */
 export function buildAbility(
-  permittedStrings: (string | IClaimData | Claim)[],
-  prohibitedStrings: (string | IClaimData | Claim)[],
+  permittedStrings: readonly (string | IClaimData | Claim | Readonly<IClaimData> | Readonly<Claim>)[],
+  prohibitedStrings: readonly (string | IClaimData | Claim | Readonly<IClaimData> | Readonly<Claim>)[],
 ): Ability {
   const permitted = buildClaimSet(permittedStrings);
   const prohibited = buildClaimSet(prohibitedStrings);
