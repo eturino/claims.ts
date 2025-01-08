@@ -5,9 +5,7 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "commit": "git-cz",
     "build": "tsup",
@@ -32,31 +30,28 @@
   },
   "homepage": "https://github.com/eturino/claims.ts",
   "license": "MIT",
-  "keywords": [
-    "claims",
-    "permissions"
-  ],
+  "keywords": ["claims", "permissions"],
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@commitlint/cli": "^19.6.0",
+    "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
-    "@commitlint/cz-commitlint": "^19.5.0",
-    "@types/node": "^22.9.1",
-    "@vitest/coverage-v8": "^2.1.5",
+    "@commitlint/cz-commitlint": "^19.6.1",
+    "@types/node": "^22.10.5",
+    "@vitest/coverage-v8": "^2.1.8",
     "commitizen": "^4.3.1",
     "husky": "^9.1.7",
     "inquirer": "^9.3.7",
     "standard-version": "^9.5.0",
     "ts-enum-util": "^4.1.0",
     "tsup": "^8.3.5",
-    "typescript": "^5.6.3",
-    "vitest": "^2.1.5"
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
   },
   "dependencies": {
-    "es-toolkit": "^1.27.0"
+    "es-toolkit": "^1.31.0"
   },
   "peerDependencies": {
-    "@eturino/key-set": "^5.7.0"
+    "@eturino/key-set": "^5.9"
   },
   "config": {
     "commitizen": {
