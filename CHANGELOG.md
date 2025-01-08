@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.4](https://github.com/eturino/claims.ts/compare/v0.4.3...v0.4.4) (2025-01-08)
+
+
+### Bug Fixes
+
+* updated dependencies, including updated @eturino/key-set peerDependency ([5fa39ac](https://github.com/eturino/claims.ts/commit/5fa39ac2002a347ec5495f21b69709a277b56285))
+
 ### [0.4.3](https://github.com/eturino/claims.ts/compare/v0.4.2...v0.4.3) (2024-11-20)
 
 
