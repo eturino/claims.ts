@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.5](https://github.com/eturino/claims.ts/compare/v0.4.3...v0.4.5) (2025-01-09)
+
+
+### Bug Fixes
+
+* better key-set peerDependency ([0e5a384](https://github.com/eturino/claims.ts/commit/0e5a384844dae8ae0771d2ab819d2ace106d30d5))
+* **deps:** bump es-toolkit from 1.27.0 to 1.29.0 ([#563](https://github.com/eturino/claims.ts/issues/563)) ([2e8ebd3](https://github.com/eturino/claims.ts/commit/2e8ebd3af9e8af6f790c966a28e4c3e95f702327))
+* **deps:** bump es-toolkit from 1.29.0 to 1.30.1 ([#568](https://github.com/eturino/claims.ts/issues/568)) ([ba5b655](https://github.com/eturino/claims.ts/commit/ba5b655a392d23aa7cec5ae5d2cdf566d64b58d5))
+* **deps:** bump es-toolkit from 1.30.1 to 1.31.0 ([#571](https://github.com/eturino/claims.ts/issues/571)) ([24e8544](https://github.com/eturino/claims.ts/commit/24e8544229cac6b95283fde1988789cbe04c6829))
+* updated dependencies, including updated @eturino/key-set peerDependency ([b5def87](https://github.com/eturino/claims.ts/commit/b5def8701bb7fa8f7aebde64464e987039f6cb0c))
+
 ### [0.4.4](https://github.com/eturino/claims.ts/compare/v0.4.3...v0.4.4) (2025-01-08)
 
 
