@@ -5,9 +5,7 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "commit": "git-cz",
     "build": "tsup",
@@ -32,10 +30,7 @@
   },
   "homepage": "https://github.com/eturino/claims.ts",
   "license": "MIT",
-  "keywords": [
-    "claims",
-    "permissions"
-  ],
+  "keywords": ["claims", "permissions"],
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@commitlint/cli": "^19.6.1",
@@ -56,7 +51,7 @@
     "es-toolkit": "^1.31.0"
   },
   "peerDependencies": {
-    "@eturino/key-set": "^5.9"
+    "@eturino/key-set": ">=5.10.0 <6.0.0"
   },
   "config": {
     "commitizen": {
