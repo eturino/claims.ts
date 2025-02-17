@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.7](https://github.com/eturino/claims.ts/compare/v0.4.6...v0.4.7) (2025-02-17)
+
+
+### Bug Fixes
+
+* **deps:** bump es-toolkit from 1.31.0 to 1.32.0 ([#590](https://github.com/eturino/claims.ts/issues/590)) ([512c2fa](https://github.com/eturino/claims.ts/commit/512c2fa4e83abc3626ce2a8b82620faa733645a7))
+* **deps:** bump vite from 5.4.11 to 5.4.14 ([#583](https://github.com/eturino/claims.ts/issues/583)) ([d2b63d6](https://github.com/eturino/claims.ts/commit/d2b63d647bede1710cd7a81fca901bb866ee0f4d))
+* update dependencies and open peerDeps ([16ea553](https://github.com/eturino/claims.ts/commit/16ea553fef7d8c930f923bb40dc7994489d838e3))
+
 ### [0.4.6](https://github.com/eturino/claims.ts/compare/v0.4.5...v0.4.6) (2025-01-09)
 
 ### [0.4.5](https://github.com/eturino/claims.ts/compare/v0.4.3...v0.4.5) (2025-01-09)

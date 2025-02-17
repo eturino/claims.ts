@@ -1,6 +1,6 @@
 {
   "name": "@eturino/claims",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "Claim, ClaimSet and Ability for permissions (Typescript port of https://github.com/eturino/claims)",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
