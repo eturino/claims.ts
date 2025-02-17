@@ -6,7 +6,10 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "LICENSE",
+    "README.md"
   ],
   "scripts": {
     "commit": "git-cz",
@@ -17,9 +20,7 @@
     "check:tsc": "tsc --noEmit",
     "test": "vitest run --coverage",
     "test:watch": "vitest",
-    "reset": "git clean -dfx -e .idea && git reset --hard && npm install",
-    "version": "standard-version",
-    "prepare-release": "npm run reset && npm run check && npm run test && npm run version && npm run build",
+    "prepare-release": "npm run check && npm run test && npm run build",
     "prepare": "husky || true"
   },
   "author": "Eduardo Turiño <eturino@eturino.com>",
@@ -38,25 +39,24 @@
   ],
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@commitlint/cli": "^19.6.1",
-    "@commitlint/config-conventional": "^19.6.0",
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
     "@commitlint/cz-commitlint": "^19.6.1",
-    "@types/node": "^22.10.5",
-    "@vitest/coverage-v8": "^2.1.8",
+    "@types/node": "^22.13.4",
+    "@vitest/coverage-v8": "^3.0.5",
     "commitizen": "^4.3.1",
     "husky": "^9.1.7",
     "inquirer": "^9.3.7",
-    "standard-version": "^9.5.0",
     "ts-enum-util": "^4.1.0",
-    "tsup": "^8.3.5",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
   },
   "dependencies": {
-    "es-toolkit": "^1.31.0"
+    "es-toolkit": "^1.32.0"
   },
   "peerDependencies": {
-    "@eturino/key-set": ">=5.10.0 <6.0.0"
+    "@eturino/key-set": ">=5.11.0 <6.0.0"
   },
   "config": {
     "commitizen": {
