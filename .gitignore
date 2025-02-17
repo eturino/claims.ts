@@ -5,6 +5,7 @@ src/**.js
 .idea/*
 .history/*
 yarn-error.log
+package-lock.json
 
 coverage
 .nyc_output
