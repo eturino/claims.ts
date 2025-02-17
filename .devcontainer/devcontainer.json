@@ -12,7 +12,8 @@
         "talljack.vscode-package-version",
         "vitest.explorer",
         "streetsidesoftware.code-spell-checker",
-        "EditorConfig.EditorConfig"
+        "EditorConfig.EditorConfig",
+        "github.vscode-github-actions"
       ]
     }
   }
