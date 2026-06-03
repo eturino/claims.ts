@@ -3,6 +3,9 @@ on:
   push:
     branches: [master, main]
 
+permissions:
+  contents: read
+
 jobs:
   test_and_publish:
     runs-on: ubuntu-latest
@@ -20,13 +23,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-          registry-url: "https://registry.npmjs.org/"
+      - name: Set up toolchain
+        uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4.0.1
 
       - name: Configure Git
         run: |
@@ -41,7 +41,7 @@ jobs:
 
       - name: Run release-please
         id: release_please
-        uses: googleapis/release-please-action@v4
+        uses: googleapis/release-please-action@5c625bfb5d1ff62eadeeb3772007f7f66fdcf071 # v4.4.1
         with:
           release-type: node
           skip-github-release: false
@@ -51,7 +51,7 @@ jobs:
         run: npm run build
 
       - name: Publish to npm using JS-DevTools/npm-publish (if not released already)
-        uses: JS-DevTools/npm-publish@v3
+        uses: JS-DevTools/npm-publish@19c28f1ef146469e409470805ea4279d47c3d35c # v3
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
