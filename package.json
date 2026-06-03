@@ -15,12 +15,12 @@
     "commit": "git-cz",
     "build": "tsup",
     "dev": "tsup --watch",
-    "check": "npm run check:biome && npm run check:tsc",
+    "check": "pnpm check:biome && pnpm check:tsc",
     "check:biome": "biome check --write src",
     "check:tsc": "tsc --noEmit",
     "test": "vitest run --coverage",
     "test:watch": "vitest",
-    "prepare-release": "npm run check && npm run test && npm run build",
+    "prepare-release": "pnpm check && pnpm test && pnpm build",
     "prepare": "husky || true"
   },
   "author": "Eduardo Turiño <eturino@eturino.com>",
@@ -62,5 +62,6 @@
     "commitizen": {
       "path": "@commitlint/cz-commitlint"
     }
-  }
+  },
+  "packageManager": "pnpm@11.5.1"
 }

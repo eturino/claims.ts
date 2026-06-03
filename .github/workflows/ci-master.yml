@@ -34,10 +34,10 @@ jobs:
           git config --global user.name "GitHub Actions"
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
 
       - name: Run checks
-        run: npm run check
+        run: pnpm check
 
       - name: Run release-please
         id: release_please
@@ -48,7 +48,7 @@ jobs:
           skip-github-pull-request: false
 
       - name: Build package
-        run: npm run build
+        run: pnpm build
 
       - name: Publish to npm using JS-DevTools/npm-publish (if not released already)
         uses: JS-DevTools/npm-publish@19c28f1ef146469e409470805ea4279d47c3d35c # v3
