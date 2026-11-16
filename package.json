@@ -49,7 +49,7 @@
     "inquirer": "^12.11.1",
     "ts-enum-util": "^4.1.0",
     "tsup": "^9.0.0",
-    "typescript": "^5.7.3",
+    "typescript": "^7.0.2",
     "vitest": "^3.0.5"
   },
   "dependencies": {
